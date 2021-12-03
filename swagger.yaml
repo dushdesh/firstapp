@@ -1,0 +1,47 @@
+basePath: /
+consumes:
+- application/json
+definitions:
+  User:
+    properties:
+      email:
+        type: string
+        x-go-name: Email
+      firstName:
+        type: string
+        x-go-name: FirstName
+      id:
+        format: int64
+        type: integer
+        x-go-name: Id
+      lastName:
+        type: string
+        x-go-name: LastName
+    type: object
+    x-go-package: github.com/dushdesh/firstapp/data
+info:
+  description: Documentation for Users API
+  title: Users API
+  version: 1.0.0
+paths:
+  /users:
+    get:
+      description: Returns a list of users
+      operationId: listUsers
+      responses:
+        "200":
+          $ref: '#/responses/usersResponse'
+      tags:
+      - users
+produces:
+- application/json
+responses:
+  usersResponse:
+    description: List of users returned in the response
+    schema:
+      items:
+        $ref: '#/definitions/User'
+      type: array
+schemes:
+- http
+swagger: "2.0"
